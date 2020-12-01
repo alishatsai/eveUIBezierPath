@@ -27,6 +27,7 @@ struct DrawView: UIViewRepresentable {
         let view = UIView()
         let eveView = UIView()
         eveView.frame = CGRect(x: 0, y: 180, width: 350, height: 350)
+        
 //        eveView.addSubview(backImageView)//完成底圖描繪可隱藏
         eveView.addSubview(bodyView)
         eveView.addSubview(bodyTopView)
@@ -40,9 +41,10 @@ struct DrawView: UIViewRepresentable {
         eveView.addSubview(shadowHLView)
         eveView.addSubview(handRightView)
         eveView.addSubview(handLeftView)
-        eveView.addSubview(shadowView)
+//        eveView.addSubview(shadowView)
     
         view.addSubview(eveView)
+
     
         return view
     }
@@ -228,7 +230,7 @@ func makeBodyView() -> UIView {
     bodyLayer.strokeColor = CGColor(srgbRed: 10/255, green: 10/255, blue: 10/255, alpha: 0.2)
     bodyLayer.lineCap = CAShapeLayerLineCap.round
     bodyLayer.lineJoin = CAShapeLayerLineJoin.round
-    bodyLayer.fillColor = CGColor(srgbRed: 249/255, green: 249/255, blue: 249/255, alpha: 0.5)
+    bodyLayer.fillColor = CGColor(srgbRed: 249/255, green: 249/255, blue: 249/255, alpha: 1)
     bodyView.layer.addSublayer(bodyLayer)
     return bodyView
 }
@@ -376,16 +378,26 @@ struct ContentView: View {
                     clickHappy()
                 }) {
                     Text("Happy")
+                    .background(Color.yellow)
                 }
                 .frame(width: 60, height: 50)
+                .position(x: 120, y: 250)
+                
                 Button(action: {
                     clickAngry()
                 }) {
                     Text("Angry")
+                    .background(Color.yellow)
                 }
                 .frame(width: 60, height: 50)
+                .position(x: 75, y: 250)
             }
         }
+        .background(
+            Image("outerSpace")
+                .edgesIgnoringSafeArea(.all)
+        )
+        
     }
     
     //click Happy
